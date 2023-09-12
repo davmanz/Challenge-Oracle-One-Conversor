@@ -1,0 +1,125 @@
+package com.manzano.converter;
+
+import javax.swing.JOptionPane;
+
+public class DistanceConverter {
+
+    public static void convertDistance(double distance) {
+        String[] options = { 
+            "De milímetros a centímetros",
+            "De centímetros a milímetros",
+            "De centímetros a metros",
+            "De metros a centímetros",
+            "De metros a kilómetros",
+            "De kilómetros a metros",
+            "De pulgadas a centímetros",
+            "De pies a metros",
+            "De yardas a metros",
+            "De millas a kilómetros",
+            "De kilómetros a millas"
+        };
+
+        String choice = (String) JOptionPane.showInputDialog(
+            null, 
+            "Selecciona una opción:", 
+            "Distancias",
+            JOptionPane.PLAIN_MESSAGE, 
+            null, 
+            options, 
+            options[0]);
+
+        if (choice != null) {
+            // Realizar la conversión basada en la elección del usuario y mostrar el resultado
+            String resultMessage = convert(choice, distance);
+            JOptionPane.showMessageDialog(
+                null,
+                resultMessage,
+                "Resultado",
+                JOptionPane.INFORMATION_MESSAGE);
+            
+            // Preguntar al usuario si desea continuar
+            int continueOption = JOptionPane.showConfirmDialog(
+                null,
+                "¿Desea Continuar?",
+                "Continuar",
+                JOptionPane.YES_NO_CANCEL_OPTION);
+
+            if (continueOption == JOptionPane.YES_OPTION) {
+                MainMenu.main(new String[0]); // Volver al MainMenu
+            } else if (continueOption == JOptionPane.NO_OPTION) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Programa Finalizado",
+                    "Finalizado",
+                    JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // En caso el usuario elija "Cancelar" o cierre el cuadro de diálogo
+                System.exit(0); // Cierra la aplicación
+            }
+        } else {
+            // En caso el usuario cierre el cuadro de diálogo sin seleccionar una opción
+            JOptionPane.showMessageDialog(
+                null,
+                "Se canceló la operación. Programa Finalizado.",
+                "Cancelar",
+                JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0); // Salir del programa
+        }
+    }
+
+    private static String convert(String choice, double distance) {
+        double result = 0.0;
+        String resultUnit = "";
+
+        switch (choice) {
+            case "De milímetros a centímetros":
+                result = distance / 10;
+                resultUnit = "centímetros";
+                break;
+            case "De centímetros a milímetros":
+                result = distance * 10;
+                resultUnit = "milímetros";
+                break;
+            case "De centímetros a metros":
+                result = distance / 100;
+                resultUnit = "metros";
+                break;
+            case "De metros a centímetros":
+                result = distance * 100;
+                resultUnit = "centímetros";
+                break;
+            case "De metros a kilómetros":
+                result = distance / 1000;
+                resultUnit = "kilómetros";
+                break;
+            case "De kilómetros a metros":
+                result = distance * 1000;
+                resultUnit = "metros";
+                break;
+            case "De pulgadas a centímetros":
+                result = distance * 2.54;
+                resultUnit = "centímetros";
+                break;
+            case "De pies a metros":
+                result = distance * 0.3048;
+                resultUnit = "metros";
+                break;
+            case "De yardas a metros":
+                result = distance * 0.9144;
+                resultUnit = "metros";
+                break;
+            case "De millas a kilómetros":
+                result = distance * 1.60934;
+                resultUnit = "kilómetros";
+                break;
+            case "De kilómetros a millas":
+                result = distance * 0.621371;
+                resultUnit = "millas";
+                break;
+            default:
+                return "Selección no válida.";
+        }
+
+        return "El resultado de la conversión es: " + String.format("%.2f", result) + " " + resultUnit;
+    }
+}

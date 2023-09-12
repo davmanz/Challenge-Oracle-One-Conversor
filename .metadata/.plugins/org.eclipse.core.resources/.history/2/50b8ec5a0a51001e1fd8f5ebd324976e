@@ -1,0 +1,94 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class CurrencyConverter {
+
+    public static void main(String[] args) {
+        String[] options = { 
+            "De Soles a Dolares", 
+            "De Soles a Euros",
+            "De Soles a Libras Esterlinas",
+            "De Soles a Yen Japones",
+            "De Soles a Won sur-coreano",
+            "De Dolares a Soles",
+            "De Euros a Soles",
+            "De Libras Esterlinas a Soles",
+            "De Yen Japones a Soles",
+            "De Won sur-coreano a Soles"
+        };
+
+        String choice = (String) JOptionPane.showInputDialog(null, "Selecciona una opción:", "Monedas",
+                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+
+        // Realizar la conversión basada en la elección del usuario y mostrar el resultado
+        String resultMessage = convert(choice);
+        JOptionPane.showMessageDialog(null, resultMessage, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static convertCurrency(double mountx) {
+    	double mount = double mountx
+    }
+    
+     public static String convert(String choice) {
+        double dolar = 3.712;
+        double euro = 3.955;
+        double libra = 5.100;
+        double yen = 39.69;
+        double won = 360.50;
+
+        double amount = Double.parseDouble(JOptionPane.showInputDialog("Ingresa la cantidad a convertir:"));
+
+        // Realizar la conversión basada en la elección del usuario
+        double result = 0.0;
+        String resultCurrency = "";
+
+        switch (choice) {
+            case "De Soles a Dolares":
+                result = amount / dolar;
+                resultCurrency = "USD";
+                break;
+            case "De Soles a Euros":
+                result = amount / euro;
+                resultCurrency = "EUR";
+                break;
+            case "De Soles a Libras Esterlinas":
+                result = amount / libra;
+                resultCurrency = "GBP";
+                break;
+            case "De Soles a Yen Japones":
+                result = amount / yen;
+                resultCurrency = "JPY";
+                break;
+            case "De Soles a Won sur-coreano":
+                result = amount / won;
+                resultCurrency = "KRW";
+                break;
+            case "De Dolares a Soles":
+                result = amount * dolar;
+                resultCurrency = "PEN";
+                break;
+            case "De Euros a Soles":
+                result = amount * euro;
+                resultCurrency = "PEN";
+                break;
+            case "De Libras Esterlinas a Soles":
+                result = amount * libra;
+                resultCurrency = "PEN";
+                break;
+            case "De Yen Japones a Soles":
+                result = amount * yen;
+                resultCurrency = "PEN";
+                break;
+            case "De Won sur-coreano a Soles":
+                result = amount * won;
+                resultCurrency = "PEN";
+                break;
+            default:
+                return "Selección no válida.";
+        }
+
+        return "El resultado de la conversión es: " + String.format("%.2f", result) + " " + resultCurrency;
+    }
+}
+

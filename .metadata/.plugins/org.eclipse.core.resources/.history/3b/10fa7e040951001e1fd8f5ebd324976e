@@ -1,0 +1,39 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class CurrencyConverter {
+
+    public static void main(String[] args) {
+        String[] options = { 
+            "De Soles a Dolares", 
+            "De Soles a Euros",
+            "De Soles a Libras Esterlinas",
+            "De Soles a Yen Japones",
+            "De Soles a Won sur-coreano",
+            "De Dolares a Soles",
+            "De Euros a Soles",
+            "De Libras Esterlinas a Soles",
+            "De Yen Japones a Soles",
+            "De Won sur-coreano a Soles"
+        };
+
+        String choice = (String) JOptionPane.showInputDialog(null, "Selecciona una opción:", "Monedas",
+                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+
+        // Llamar al método de conversión basado en la elección del usuario
+        convert(choice);
+    }
+
+    public static void convert(String choice) {
+        // Definir tus variables de conversión aquí
+        double dolar = 3.712;
+        double euro = 3.955;
+        double libra = 5.100;
+        double yen = 39.69;
+        double won = 360.50;
+
+        // Realizar la conversión según la elección del usuario
+        // Aquí debes agregar el código para realizar la conversión y mostrar el resultado
+    }
+}

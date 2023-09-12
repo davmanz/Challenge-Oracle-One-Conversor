@@ -1,0 +1,10 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class CurrencyConverter {
+
+    public static void main(String[] args) {
+        // Resto del código del conversor de moneda
+    }
+}

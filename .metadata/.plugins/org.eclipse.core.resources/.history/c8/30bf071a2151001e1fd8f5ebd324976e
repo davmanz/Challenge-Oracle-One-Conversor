@@ -1,0 +1,115 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class DistanceConverter {
+
+    public static void main(String[] args) {
+        String[] options = { 
+            "De milímetros a centímetros",
+            "De centímetros a milímetros",
+            "De centímetros a metros",
+            "De metros a centímetros",
+            "De metros a kilómetros",
+            "De kilómetros a metros",
+            "De pulgadas a centímetros",
+            "De pies a metros",
+            "De yardas a metros",
+            "De millas a kilómetros",
+            "De kilómetros a millas"
+        };
+
+        String choice = (String) JOptionPane.showInputDialog(null, "Selecciona una opción:", "Distancias",
+            JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+
+        double distanceInput = getInput();
+
+        if (distanceInput != Double.MIN_VALUE) {
+            // Llamar al método convert y pasar el valor y la opción para realizar la conversión
+            String resultMessage = convert(choice, distanceInput);
+            JOptionPane.showMessageDialog(null, resultMessage, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    private static double getInput() {
+        double distanceInput = Double.MIN_VALUE;
+        boolean inputValid = false;
+
+        while (!inputValid) {
+            String distanceInputString = JOptionPane.showInputDialog(
+                null,
+                "Ingresa la distancia que deseas convertir:",
+                "Input",
+                JOptionPane.QUESTION_MESSAGE);
+
+            try {
+                distanceInput = Double.parseDouble(distanceInputString);
+                inputValid = true;
+            } catch (NumberFormatException e) {
+                showErrorMessage("Error: Ingresa un número válido");
+            }
+        }
+
+        return distanceInput;
+    }
+
+    private static String convert(String choice, double distance) {
+        double result = 0.0;
+        String resultUnit = "";
+
+        switch (choice) {
+            case "De milímetros a centímetros":
+                result = distance / 10;
+                resultUnit = "centímetros";
+                break;
+            case "De centímetros a milímetros":
+                result = distance * 10;
+                resultUnit = "milímetros";
+                break;
+            case "De centímetros a metros":
+                result = distance / 100;
+                resultUnit = "metros";
+                break;
+            case "De metros a centímetros":
+                result = distance * 100;
+                resultUnit = "centímetros";
+                break;
+            case "De metros a kilómetros":
+                result = distance / 1000;
+                resultUnit = "kilómetros";
+                break;
+            case "De kilómetros a metros":
+                result = distance * 1000;
+                resultUnit = "metros";
+                break;
+            case "De pulgadas a centímetros":
+                result = distance * 2.54;
+                resultUnit = "centímetros";
+                break;
+            case "De pies a metros":
+                result = distance * 0.3048;
+                resultUnit = "metros";
+                break;
+            case "De yardas a metros":
+                result = distance * 0.9144;
+                resultUnit = "metros";
+                break;
+            case "De millas a kilómetros":
+                result = distance * 1.60934;
+                resultUnit = "kilómetros";
+                break;
+            case "De kilómetros a millas":
+                result = distance * 0.621371;
+                resultUnit = "millas";
+                break;
+            default:
+                return "Selección no válida.";
+        }
+
+        return "El resultado de la conversión es: " + String.format("%.2f", result) + " " + resultUnit;
+    }
+
+    private static void showErrorMessage(String message) {
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}

@@ -1,0 +1,96 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class DistanceConverter {
+
+    public static void convertDistance(double distance) {
+        String[] options = { 
+            "De milímetros a centímetros",
+            "De centímetros a milímetros",
+            "De centímetros a metros",
+            "De metros a centímetros",
+            "De metros a kilómetros",
+            "De kilómetros a metros",
+            "De pulgadas a centímetros",
+            "De pies a metros",
+            "De yardas a metros",
+            "De millas a kilómetros",
+            "De kilómetros a millas"
+        };
+
+        String choice = (String) JOptionPane.showInputDialog(
+        		null, 
+        		"Selecciona una opción:", 
+        		"Distancias",
+        		JOptionPane.PLAIN_MESSAGE, 
+        		null, 
+        		options, 
+        		options[0]);
+    
+    // Realizar la conversión basada en la elección del usuario y mostrar el resultado
+    String resultMessage = convert(choice, distance);
+    JOptionPane.showMessageDialog(
+    		null,
+    		resultMessage,
+    		"Resultado",
+    		JOptionPane.INFORMATION_MESSAGE);
+    
+    }
+
+    private static String convert(String choice, double distance) {
+        double result = 0.0;
+        String resultUnit = "";
+
+        switch (choice) {
+            case "De milímetros a centímetros":
+                result = distance / 10;
+                resultUnit = "centímetros";
+                break;
+            case "De centímetros a milímetros":
+                result = distance * 10;
+                resultUnit = "milímetros";
+                break;
+            case "De centímetros a metros":
+                result = distance / 100;
+                resultUnit = "metros";
+                break;
+            case "De metros a centímetros":
+                result = distance * 100;
+                resultUnit = "centímetros";
+                break;
+            case "De metros a kilómetros":
+                result = distance / 1000;
+                resultUnit = "kilómetros";
+                break;
+            case "De kilómetros a metros":
+                result = distance * 1000;
+                resultUnit = "metros";
+                break;
+            case "De pulgadas a centímetros":
+                result = distance * 2.54;
+                resultUnit = "centímetros";
+                break;
+            case "De pies a metros":
+                result = distance * 0.3048;
+                resultUnit = "metros";
+                break;
+            case "De yardas a metros":
+                result = distance * 0.9144;
+                resultUnit = "metros";
+                break;
+            case "De millas a kilómetros":
+                result = distance * 1.60934;
+                resultUnit = "kilómetros";
+                break;
+            case "De kilómetros a millas":
+                result = distance * 0.621371;
+                resultUnit = "millas";
+                break;
+            default:
+                return "Selección no válida.";
+        }
+
+        return "El resultado de la conversión es: " + String.format("%.2f", result) + " " + resultUnit;
+    }
+}

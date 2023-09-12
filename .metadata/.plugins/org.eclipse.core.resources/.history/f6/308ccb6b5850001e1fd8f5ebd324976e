@@ -1,0 +1,20 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class CurrencyConverterInput {
+
+    public static void main(String[] args) {
+        String mountInputString = JOptionPane.showInputDialog(null, "Ingresa la cantidad de dinero que deseas convertir:",
+                "Conversor de Moneda - Ingreso", JOptionPane.QUESTION_MESSAGE);
+        try {
+            double mountInput = Double.parseDouble(mountInputString);
+
+            // Resto del código para el conversor de moneda
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Error: Ingresa un número válido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}
+

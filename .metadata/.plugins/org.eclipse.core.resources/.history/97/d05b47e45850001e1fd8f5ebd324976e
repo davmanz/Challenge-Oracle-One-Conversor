@@ -1,0 +1,26 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class MainMenu {
+
+    public static void main(String[] args) {
+        String[] options = { "Conversor de Moneda", "Conversor de Temperatura" };
+        int choice = JOptionPane.showOptionDialog(null, "Selecciona una opción:", "Menú Principal",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+
+        switch (choice) {
+            case 0:
+                // Abrir el conversor de moneda
+                CurrencyConverter.main(args);
+                break;
+            case 1:
+                // Abrir el conversor de temperatura
+                TemperatureConverter.main(args);
+                break;
+            default:
+                // Salir del programa
+                break;
+        }
+    }
+}

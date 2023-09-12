@@ -1,0 +1,70 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class TemperatureConverter {
+
+    public static void convertTemperature(double temperature) {
+        String[] options = { 
+            "De Celsius a Fahrenheit",
+            "De Fahrenheit a Celsius",
+            "De Celsius a Kelvin",
+            "De Kelvin a Celsius",
+            "De Kelvin a Fahrenheit",
+            "De Fahrenheit a Kelvin"            
+        };
+
+        String choice = (String) JOptionPane.showInputDialog(
+        		null, 
+        		"Selecciona una opción:", 
+        		"Temperaturas",
+                JOptionPane.PLAIN_MESSAGE, 
+                null, 
+                options, 
+                options[0]);
+
+        // Realizar la conversión basada en la elección del usuario y mostrar el resultado
+        String resultMessage = convert(choice, temperature);
+        JOptionPane.showMessageDialog(
+        		null, 
+        		resultMessage, 
+        		"Resultado", 
+        		JOptionPane.INFORMATION_MESSAGE);
+    }
+
+     public static String convert(String choice, double temperature) {
+        double result = 0.0;
+        String resultUnit = "";
+
+        switch (choice) {
+            case "De Celsius a Fahrenheit":
+                result = (temperature * 9/5) + 32;
+                resultUnit = "Fahrenheit";
+                break;
+            case "De Fahrenheit a Celsius":
+                result = (temperature - 32) * 5/9;
+                resultUnit = "Celsius";
+                break;
+            case "De Celsius a Kelvin":
+                result = temperature + 273.15;
+                resultUnit = "Kelvin";
+                break;
+            case "De Kelvin a Celsius":
+                result = temperature - 273.15;
+                resultUnit = "Celsius";
+                break;
+            case "De Kelvin a Fahrenheit":
+                result = (temperature * 9/5) - 459.67;
+                resultUnit = "Fahrenheit";
+                break;
+            case "De Fahrenheit a Kelvin":
+                result = (temperature + 459.67) * 5/9;
+                resultUnit = "Kelvin";
+                break;
+            default:
+                return "Selección no válida.";
+        }
+
+        return "El resultado de la conversión es: " + String.format("%.2f", result) + " " + resultUnit;
+    }
+}

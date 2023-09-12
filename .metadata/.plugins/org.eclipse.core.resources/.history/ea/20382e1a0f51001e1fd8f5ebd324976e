@@ -1,0 +1,27 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class TemperatureConverterInput {
+
+    public static void main(String[] args) {
+        String temperatureInputString = JOptionPane.showInputDialog(
+        		null, 
+        		"Ingresa la temperatura que deseas convertir:",
+                "Input", 
+                JOptionPane.QUESTION_MESSAGE);
+        try {
+            double temperatureInput = Double.parseDouble(temperatureInputString);
+
+            // Llamar a la clase TemperatureConverter y pasar el valor para realizar la conversión
+            TemperatureConverter.convertTemperature(temperatureInput);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(
+            		null, 
+            		"Error: Ingresa un número válido", 
+            		"Error", 
+            		JOptionPane.ERROR_MESSAGE);
+        }
+    }
+}

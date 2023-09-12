@@ -1,0 +1,51 @@
+package root;
+
+import javax.swing.JOptionPane;
+
+public class DistanceConverterInput {
+
+    public static void main(String[] args) {
+        double distanceInput = 0.0;
+        boolean inputValid = false;
+
+        while (!inputValid) {
+            String distanceInputString = JOptionPane.showInputDialog(
+                null,
+                "Ingresa la distancia que deseas convertir:",
+                "Input",
+                JOptionPane.QUESTION_MESSAGE);
+
+            try {
+                distanceInput = Double.parseDouble(distanceInputString);
+                inputValid = true;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Error: Ingresa un número válido",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        String[] options = { 
+            "De milímetros a centímetros",
+            "De centímetros a milímetros",
+            "De centímetros a metros",
+            "De metros a centímetros",
+            "De metros a kilómetros",
+            "De kilómetros a metros",
+            "De pulgadas a centímetros",
+            "De pies a metros",
+            "De yardas a metros",
+            "De millas a kilómetros",
+            "De kilómetros a millas"
+        };
+
+        String choice = (String) JOptionPane.showInputDialog(null, "Selecciona una opción:", "Distancias",
+                JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+
+        // Llamar a la clase DistanceConverter y pasar el valor y la opción para realizar la conversión
+        String resultMessage = DistanceConverter.convertDistance(choice, distanceInput);
+        JOptionPane.showMessageDialog(null, resultMessage, "Resultado", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
