@@ -25,3 +25,9 @@
 <h2>Contribuciones</h2>
   <p>Si deseas contribuir a este proyecto, ¡te damos la bienvenida! Puedes hacerlo creando nuevas funciones, mejorando la interfaz de usuario o solucionando problemas existentes. Siéntete libre de abrir un problema o enviar una solicitud de extracción.</p>
   <p>Esperamos que esta aplicación de conversión sea útil y te ayude a realizar conversiones rápidas y precisas en tu vida diaria.</p>
+
+  <h2>Autor</h2>
+
+<p>Este proyecto fue creado y desarrollado por:</p>
+
+<strong>David Jose Manzano Arias</strong>
